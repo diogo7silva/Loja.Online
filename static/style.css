@@ -1,0 +1,110 @@
+body {
+  background-color: #EEE;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+shop {
+  display: block;
+  font-size: 1em;
+  color: #C11;
+  margin-top:16px;
+  margin-bottom:16px;
+}
+
+moeda {
+  display: block;
+  color: #1C1;
+  font-weight: bold;
+}
+
+input, textarea {
+  padding: 5px 15px;
+}
+
+input[type=text], input[type=password] {
+  width: 256px;
+}
+
+fieldset {
+  width: 256px;
+  padding: 50px;
+  background-color: lightgray;
+  border: 2px groove;
+}
+
+
+table, td {
+  background-color: lightgray;
+  border: 30px solid lightgray;
+  border-collapse: collapse;
+}
+
+td {
+  background-color: white;
+  text-align: center;
+  padding: 30px 10px;
+  width: 256px;
+  vertical-align: bottom;
+}
+
+.navbar user {
+  float: right;
+  padding: 12px;
+  color: #ff8;
+  text-decoration: none;
+  font-size: 17px;
+  background-color: #000;
+}
+
+.navbar {
+  width: 100%;
+  background-color: #555;
+  overflow: auto;
+}
+
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+
+.active {
+  background-color: #5B5;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+  }
+}
+
+
+
+.pagbar {
+  padding: 12px;
+  background-color: #555;
+}
+
+.pagbar a {
+  padding: 12px;
+  color: #39d;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.pagbar current {
+  padding: 12px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.pagbar a:hover {
+  background-color: #000;
+}

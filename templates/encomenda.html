@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block titulo %}
+<title>Index</title>
+{% endblock %}
+
+{% block conteudo %}
+<center>
+    <h1>Obrigado por comprar na nossa loja!</h1>
+    <h3>A sua encomenda foi registada com sucesso.</h3>
+    <img src="/static/images/encomenda.png"><br>
+    <input type="button" value="Obter Comprovativo" onclick="window.open('/static/faturas/{{ fatura }}')">
+</center>
+{% endblock %}

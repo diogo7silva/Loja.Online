@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" href="/static/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/static/style.css">
+{% block titulo %}
+{% endblock %}
+
+<script type="text/javascript" src="/static/scroll.js"></script>
+<body>
+
+{% set livro = loja.livro %}
+{% set menu = loja.produtos %}
+{% set usr = loja.usr.id %}
+{% set carrinho = loja.carrinho %}
+{% set unidades = loja.unidades %}
+{% set total = loja.total() %}
+
+{% set icons = ['fas fa-question', 'fas fa-archive', 'fas fa-microchip', 'fas fa-desktop'] %}
+<div class="navbar">
+  <a class="active" href="/"><i class="fa fa-fw fa-home"></i> Home</a>
+  {% for nome in menu %}
+  <a href="/pr_ini/{{ nome.title }}"><i class="{{ icons.pop() }}"></i> {{ nome.title }}</a>
+  {% endfor %}
+  <a href="/carrinho_ini"><i class="fas fa-shopping-cart"></i> Carrinho</a>
+  {% if usr %}
+  <a href="/logout"><i class="fa fa-fw fa-user"></i> Logout</a>
+  <user><i class="fa fa-fw fa-user-tie"></i> {{ usr }}</user>
+  {% else %}
+  <a href="/login"><i class="fa fa-fw fa-lock"></i> Login</a>
+  <a href="/registo"><i class="fa fa-fw fa-user"></i> Registo</a>
+  {% endif %}
+</div>
+{% block conteudo %}
+{% endblock %}
+
+<br><center>
+<h3>&copy; Copyright 2019 Paulo Côto</h3>
+</center>
+</body>
+</html>

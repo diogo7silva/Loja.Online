@@ -1,0 +1,85 @@
+﻿{% extends 'layout.html' %}
+{% block titulo %}
+<title>Lista de Compras</title>
+{% endblock %}
+
+{% block conteudo %}
+<center>
+    <h1>Lista de Compras</h1>
+    {% if carrinho.__len__() == 0 %}
+    <h3>O seu carrinho de compras está vazio.</h3>
+    <img src="/static/images/carrinho.png">
+    {% else %}
+    <!-- O número máximo de items por linha é ... ? -->
+    {% set items = loja.items_linha %}
+    {% set pag = loja.pagina %}
+    {% set min = pag * loja.items_pagina %}
+    {% set max = (pag + 1) * loja.items_pagina %}
+    {% if max > carrinho.__len__() %}
+    {% set max = carrinho.__len__() %}
+    {% endif %}
+    <table>
+        <tr>
+            {% for linha in range(min, max) %}
+            <td>
+                {% set folha = livro[carrinho[linha].folha] %}
+                {% set li = carrinho[linha].linha %}
+                <img src='/static/{{ folha.title }}/{{ folha.cell(row = li, column = 1).value }}.jpg'>
+                {% for co in range(1, folha.max_column) %}<br>
+                {{ folha.cell(row = 1, column = co).value }}:
+                {{ folha.cell(row = li, column = co).value }}
+                {% endfor %}
+                <moeda>{{ loja.moeda(folha.cell(row = li, column = folha.max_column).value) }}</moeda>
+                <shop><i class="fas fa-shopping-cart"></i> Carrinho: <b>{{ unidades[folha.title, li] }}</b></shop>
+                <form action="/sub/{{ linha }}">
+                    <input type='submit' value='Remover'>
+                </form>
+            </td>
+            <!-- Se a linha já tiver o número máximo de items permitido, mudar... -->
+            {% if (linha - min) % items == items - 1 %}</tr><tr>{% endif %}
+            {% endfor %}
+        </tr>
+    </table>
+    <br><br>
+    <div class="pagbar">
+        {% set total_items = carrinho.__len__() %}
+        {% if loja.pagina > 0 %}
+        <a href="/mover/0"><i class="fas fa-caret-left"></i></a>
+        {% endif %}
+        {% for l_pag in range(1, 20) %}
+        {% if l_pag == loja.pagina + 1 %}
+        <current>{{ l_pag }}</current>
+        {% elif total_items > (l_pag - 1) * loja.items_pagina %}
+        <a href="/pagina/{{ l_pag }}">{{ l_pag }}</a>
+        {% endif %}
+        {% endfor %}
+        {% if total_items > (loja.pagina + 1) * loja.items_pagina %}
+        <a href="/mover/2"><i class="fas fa-caret-right"></i></a>
+        {% endif %}
+    </div>
+    <shop><i class="fas fa-shopping-cart"></i> Total: <b>{{ loja.moeda(total) }}</b></shop>
+    <p></p>
+    {% if usr and loja.encomendar %}
+    <form method="post">
+        <fieldset>
+            <legend>Dados de faturação</legend>
+            <label>Número de identificação fiscal</label>
+            <input type="text" name="nif" value="{{ loja.usr.nif }}" required>
+            <p></p><label>Nome completo</label>
+            <input type="text" name="nome" value="{{ loja.usr.nome }} "required>
+            <p></p><label>Morada de envio</label>
+            <textarea rows="4" cols="34" name="morada" required>{{ loja.usr.morada }}</textarea>
+            <p><br></p><input type='submit' value='Finalizar a Encomenda'>
+        </fieldset>
+    </form>
+    {% elif usr %}
+    <form action="/encomendar">
+        <input type='submit' value='Encomendar'>
+    </form>
+    {% else %}
+    <h3>Inicie a sessão para efetuar a encomenda.</h3>
+    {% endif %} <!-- Se houver sessão iniciada -->
+    {% endif %} <!-- Se o carrinho não estiver vazio -->
+</center>
+{% endblock %}
+
