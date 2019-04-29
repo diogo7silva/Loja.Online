@@ -24,7 +24,7 @@
             <td>
                 {% set folha = livro[carrinho[linha].folha] %}
                 {% set li = carrinho[linha].linha %}
-                <img src='/static/{{ folha.title }}/{{ folha.cell(row = li, column = 1).value }}.jpg'>
+                <img src='/static/{{ folha.title }}/{{ folha.cell(row = li, column = 1).value }}.jpg' width="210">
                 {% for co in range(1, folha.max_column) %}<br>
                 {{ folha.cell(row = 1, column = co).value }}:
                 {{ folha.cell(row = li, column = co).value }}
