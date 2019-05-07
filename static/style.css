@@ -1,5 +1,5 @@
 body {
-  background-color: #EEE;
+  background-color: #021bff;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -28,14 +28,14 @@ input[type=text], input[type=password] {
 fieldset {
   width: 256px;
   padding: 50px;
-  background-color: lightgray;
+  background-color: #1696c9;
   border: 2px groove;
 }
 
 
 table, td {
   background-color: lightgray;
-  border: 30px solid lightgray;
+  border: 30px solid #000000;
   border-collapse: collapse;
 }
 
@@ -75,7 +75,7 @@ td {
 }
 
 .active {
-  background-color: #5B5;
+  background-color: #1696c9;
 }
 
 @media screen and (max-width: 500px) {
