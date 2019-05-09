@@ -71,7 +71,7 @@
             c.drawRightString(width - 3.32 * cm, linha - (li * ls), loja.moeda(aux.custo))
             c.drawRightString(width - 2.82 * cm, linha - (li * ls), str('23'))
             c.drawRightString(width - 1.07 * cm, linha - (li * ls), loja.moeda(aux.total()))
-        c.drawString(7 * cm, 3.15 * cm, "(c) Copyright 2019 Paulo Côto - TESTE DE IMPRESSÃO")
+        c.drawString(7 * cm, 3.15 * cm, "(c) Copyright 2019 Diogo Silva - TESTE DE IMPRESSÃO")
         texto = c.beginText(10.8 * cm, height - 2.5 * cm)
         texto.setFont('Helvetica-Bold', 14)
         texto.textLine("Encomenda")
@@ -123,5 +123,5 @@
         c.showPage()
         c.save()
         self.merge_pdf(file)
-        # self.envia_pdf(file, loja.usr.email)
+        self.envia_pdf(file, loja.usr.email)
         return file

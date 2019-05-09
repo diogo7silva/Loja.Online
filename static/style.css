@@ -113,9 +113,9 @@ td {
 .site-footer
 {
   background-color:#26272b;
-  padding:45px 0 20px;
+  padding:35px 0 20px;
   font-size:15px;
-  line-height:24px;
+  line-height:15px;
   color:#737373;
 }
 .site-footer hr
@@ -125,7 +125,7 @@ td {
 }
 .site-footer hr.small
 {
-  margin:20px 0
+  margin:20 px 0
 }
 .site-footer h6
 {
@@ -133,7 +133,7 @@ td {
   font-size:16px;
   text-transform:uppercase;
   margin-top:5px;
-  letter-spacing:2px
+  letter-spacing:1.5px
 }
 .site-footer a
 {
@@ -177,7 +177,7 @@ td {
   line-height:40px;
   margin-left:6px;
   margin-right:0;
-  border-radius:100%;
+  border-radius:50%;
   background-color:#33353d
 }
 .copyright-text
